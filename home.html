@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marvin Special Mango Graham Ice Cream</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-brown-700">
+  <header class="bg-yellow-300 shadow-md">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+      <div class="flex items-center">
+        <div class="bg-brown-500 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">
+          M
+        </div>
+        <h1 class="text-xl font-bold ml-3">Marvin Mango Graham</h1>
+      </div>
+      <nav>
+        
+      </nav>
+    </div>
+  </header>
+
+  <section
+    class="relative bg-yellow-200 h-screen flex flex-col items-center justify-center text-center bg-cover bg-center"
+    style="background-image: url('graham.webp');"
+  >
+    <div class="bg-white bg-opacity-80 p-8 rounded shadow-lg">
+      <h2 class="text-4xl font-extrabold text-brown-700">Marvin Special Mango Graham Ice Cream</h2>
+      <p class="text-lg font-medium text-brown-600 mt-4">
+        A delightful combination of mango, graham, and creamy ice cream!
+      </p>
+    </div>
+
+    <form id="userForm" class="mt-10 bg-white p-6 rounded shadow-lg bg-opacity-90">
+      <div class="mb-4">
+        <label for="username" class="block text-brown-700 font-medium">Username</label>
+        <input
+          type="text"
+          id="username"
+          class="w-full px-4 py-2 rounded border border-yellow-500 focus:ring focus:ring-yellow-300"
+          placeholder="Enter your username"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label for="email" class="block text-brown-700 font-medium">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="w-full px-4 py-2 rounded border border-yellow-500 focus:ring focus:ring-yellow-300"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+      <button
+        type="button"
+        id="goButton"
+        class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded shadow"
+      >
+        Go
+      </button>
+    </form>
+  </section>
+
+  <footer class="bg-yellow-800 text-white text-center py-4">
+    <p>Marvin Mango Graham Ice Cream.</p>
+  </footer>
+
+  <div
+    id="modal"
+    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
+  >
+    <div class="bg-white rounded-lg shadow-lg w-96 p-6 text-center">
+      <h2 class="text-2xl font-bold text-brown-700">Thank you!</h2>
+      <p class="mt-4 text-brown-600">
+        Your data will be used to personalize your experience and suggest flavors you'll love.
+      </p>
+      <button
+        id="closeModal"
+        onclick= "window.location.href='main.html'"
+        class="mt-6 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"
+      >
+        Start Ordering
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const goButton = document.getElementById("goButton");
+    const modal = document.getElementById("modal");
+    const closeModal = document.getElementById("closeModal");
+
+    goButton.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Page - Marvin Special Mango Graham Ice Cream</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-brown-700">
+
+  <header class="bg-yellow-300 shadow-md">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+      <div class="flex items-center">
+        <div class="bg-brown-500 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg">
+          M
+        </div>
+        <h1 class="text-xl font-bold ml-3">Marvin Mango Graham</h1>
+      </div>
+      <nav>
+        <a href="home.html" class="text-brown-700 hover:text-yellow-500 font-medium px-4">Home</a>
+        <a href="main.html" class="text-brown-700 hover:text-yellow-500 font-medium px-4">Product</a>
+        <a href="about.html" class="text-brown-700 hover:text-yellow-500 font-medium px-4">About</a>
+        <a href="contact.html" class="text-brown-700 hover:text-yellow-500 font-medium px-4">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="flex justify-center mt-10">
+    <div class="w-full max-w-lg bg-white shadow-lg rounded-lg p-6 text-center">
+      <img src="manggoe.jpg" alt="Marvin Special Mango Graham Ice Cream" class="w-full h-60 object-cover rounded-md">
+      <h2 class="text-2xl font-semibold text-brown-700 mt-4">Marvin Special Mango Graham Ice Cream</h2>
+      <div class="text-brown-600 mt-2">
+        <p>Price: <strong>120</strong></p>
+        <p>No. of Sold: <strong>150</strong></p>
+        <p>Ratings: <strong>4.8 / 5</strong></p>
+        <p>Location: <strong>Ranzo, Pinamalayan</strong></p>
+      </div>
+
+      <div class="mt-6 space-x-4">
+        <button id="feedbackButton" class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded">Write Feedback</button>
+        <button id="orderButton" class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded">Order</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="feedbackModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+      <div class="flex justify-start items-center mb-4">
+        <div class="bg-brown-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold text-lg mr-2">
+          U
+        </div>
+        <span class="text-brown-700 font-medium">Username</span>
+      </div>
+      <h3 class="text-xl font-semibold text-brown-700 mb-4">Write your Feedback</h3>
+      <textarea id="feedbackText" class="w-full p-3 rounded border border-yellow-500" rows="5" placeholder="Enter your feedback..."></textarea>
+      <div class="mt-4">
+        <button id="submitFeedback" class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded">Submit Feedback</button>
+      </div>
+    </div>
+  </div>
+
+  <section id="feedbackSection" class="w-full max-w-lg mx-auto mt-8">
+  </section>
+
+  <div id="orderModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+      <h3 class="text-xl font-semibold text-brown-700 mb-4">Taste it!</h3>
+      <div class="flex items-center justify-center space-x-4 mb-4">
+        <button id="decreaseQty" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">-</button>
+        <span id="quantity" class="text-2xl font-bold">1</span>
+        <button id="increaseQty" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">+</button>
+      </div>
+      <div class="mb-4">
+        <input type="text" id="location" placeholder="Enter your location" class="w-full p-2 rounded border border-yellow-500" />
+      </div>
+      <div class="mb-4">
+        <select id="deliveryOption" class="w-full p-2 rounded border border-yellow-500">
+          <option value="cash">Cash on Delivery</option>
+          <option value="pickup">Pick Up</option>
+        </select>
+      </div>
+      <div class="mt-4">
+        <button id="placeOrder" class="bg-yellow-900 hover:bg-brown-600 text-white py-2 px-4 rounded">Place Order</button>
+      </div>
+      <div class="mt-4">
+        <button id="closeOrderModal" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="thankYouModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+      <h3 class="text-2xl font-semibold text-brown-700 mb-4">Thank you! Have a sweet day!</h3>
+      <button id="closeThankYou" class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded">Close</button>
+    </div>
+  </div>
+
+  <div id="orderNotif" class="fixed bottom-0 left-1/2 transform -translate-x-1/2 bg-brown-700 text-black w-full py-2 text-center hidden">
+    <p>Your order is being processed...</p>
+    <button id="closeNotif" class="text-yellow-500 font-bold">Close</button>
+  </div>
+
+  <script>
+    document.getElementById('feedbackButton').addEventListener('click', () => {
+      document.getElementById('feedbackModal').classList.remove('hidden');
+    });
+
+    document.getElementById('orderButton').addEventListener('click', () => {
+      document.getElementById('orderModal').classList.remove('hidden');
+    });
+
+    document.getElementById('closeOrderModal').addEventListener('click', () => {
+        document.getElementById('orderModal').classList.add('hidden');
+    });
+
+    document.getElementById('submitFeedback').addEventListener('click', () => {
+      const feedbackText = document.getElementById('feedbackText').value;
+      document.getElementById('feedbackModal').classList.add('hidden');
+      const feedbackCard = document.createElement('div');
+      feedbackCard.classList.add('bg-white', 'shadow-lg', 'rounded-lg', 'p-6', 'text-center', 'mt-4');
+      feedbackCard.innerHTML = `
+        <div class="flex justify-start items-center mb-4">
+          <div class="bg-brown-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold text-lg mr-2">
+            U
+          </div>
+          <span class="text-brown-700 font-medium">You</span>
+        </div>
+        <p class="text-brown-600">${feedbackText}</p>
+      `;
+      document.getElementById('feedbackSection').appendChild(feedbackCard);
+      document.getElementById('feedbackText').value = '';
+    });
+
+    const quantitySpan = document.getElementById('quantity');
+    document.getElementById('decreaseQty').addEventListener('click', () => {
+      let quantity = parseInt(quantitySpan.textContent);
+      if (quantity > 1) {
+        quantitySpan.textContent = quantity - 1;
+      }
+    });
+
+    document.getElementById('increaseQty').addEventListener('click', () => {
+      let quantity = parseInt(quantitySpan.textContent);
+      quantitySpan.textContent = quantity + 1;
+    });
+
+    document.getElementById('placeOrder').addEventListener('click', () => {
+      const location = document.getElementById('location').value;
+      const deliveryOption = document.getElementById('deliveryOption').value;
+      document.getElementById('orderModal').classList.add('hidden');
+      document.getElementById('orderNotif').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('orderNotif').classList.add('hidden');
+        document.getElementById('thankYouModal').classList.remove('hidden');
+      }, 3000);
+    });
+
+    document.getElementById('closeThankYou').addEventListener('click', () => {
+      document.getElementById('thankYouModal').classList.add('hidden');
+    });
+
+    document.getElementById('closeNotif').addEventListener('click', () => {
+      document.getElementById('orderNotif').classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
+
+
